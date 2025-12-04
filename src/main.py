@@ -1,20 +1,34 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
+from __future__ import annotations
+
+from src.simulation import run_simulation
 
 
 def main() -> None:
-    """
-    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
-    :return: Данная функция ничего не возвращает
-    """
+    '''
+    Точка входа в приложение: запускает симуляцию казино.
+    '''
+    steps = 20
+    seed = None
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
+    try:
+        raw_input = input(
+            'Введите количество шагов и seed (опционально) через пробел '
+            f'(по умолчанию {steps} шагов): '
+        ).strip()
+    except EOFError:
+        raw_input = ''
 
-    result = power_function(target=target, power=degree)
+    if raw_input:
+        parts = raw_input.split()
+        try:
+            steps = int(parts[0])
+            if len(parts) > 1:
+                seed = int(parts[1])
+        except ValueError:
+            print('Некорректный ввод, используются значения по умолчанию.')
 
-    print(result)
+    run_simulation(steps=steps, seed=seed)
 
-    print(SAMPLE_CONSTANT)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
