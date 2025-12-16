@@ -2,12 +2,9 @@ from __future__ import annotations
 
 import random
 from collections.abc import Iterable, Iterator
-from typing import overload, TypeVar, cast
+from typing import TypeVar, cast
 
-try:
-    from src.models.goose import Goose
-except ModuleNotFoundError:
-    from models.goose import Goose
+from src.models.goose import Goose
 
 TGoose = TypeVar('TGoose', bound=Goose)
 
@@ -38,12 +35,6 @@ class GooseCollection:
         if isinstance(item, str):
             return any(g.name == item for g in self._geese)
         return False
-
-    @overload
-    def __getitem__(self, index: int) -> Goose: ...
-
-    @overload
-    def __getitem__(self, index: slice) -> 'GooseCollection': ...
 
     def __getitem__(self, index: int | slice) -> Goose | 'GooseCollection':
         if isinstance(index, slice):

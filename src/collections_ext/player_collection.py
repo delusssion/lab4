@@ -2,12 +2,8 @@ from __future__ import annotations
 
 import random
 from collections.abc import Iterable, Iterator
-from typing import overload
 
-try:
-    from src.models.player import Player
-except ModuleNotFoundError:
-    from models.player import Player
+from src.models.player import Player
 
 
 class PlayerCollection:
@@ -37,12 +33,6 @@ class PlayerCollection:
         if isinstance(item, str):
             return any(p.name == item for p in self._players)
         return False
-
-    @overload
-    def __getitem__(self, index: int) -> Player: ...
-
-    @overload
-    def __getitem__(self, index: slice) -> 'PlayerCollection': ...
 
     def __getitem__(self, index: int | slice) -> Player | 'PlayerCollection':
         if isinstance(index, slice):

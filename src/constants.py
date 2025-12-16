@@ -1,15 +1,16 @@
 DEFAULT_PLAYER_BALANCE: int = 100
 DEFAULT_PLAYERS = (
-    ('Alice', DEFAULT_PLAYER_BALANCE),
-    ('Boris', DEFAULT_PLAYER_BALANCE),
-    ('Chen', DEFAULT_PLAYER_BALANCE),
+    ('Ramzes', DEFAULT_PLAYER_BALANCE),
+    ('Afoninje', DEFAULT_PLAYER_BALANCE),
+    ('Miracle', DEFAULT_PLAYER_BALANCE),
 )
 
-DEFAULT_GEESE = (
-    ('Blizzard', 8, 'war'),
-    ('Echo', 5, 'honk'),
-    ('Nimbus', 6, 'war'),
-    ('Spark', 7, 'honk'),
+DEFAULT_GOOSE = (
+    ('Monkey King', 8, 'war'),
+    ('Earth Shaker', 5, 'honk'),
+    ('Invoker', 6, 'war'),
+    ('Shadow Fiend', 7, 'honk'),
+    
 )
 
 MIN_BET: int = 5
