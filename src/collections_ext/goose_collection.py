@@ -1,12 +1,7 @@
-from __future__ import annotations
-
 import random
 from collections.abc import Iterable, Iterator
-from typing import TypeVar, cast
 
 from src.models.goose import Goose
-
-TGoose = TypeVar('TGoose', bound=Goose)
 
 
 class GooseCollection:
@@ -36,7 +31,7 @@ class GooseCollection:
             return any(g.name == item for g in self._geese)
         return False
 
-    def __getitem__(self, index: int | slice) -> Goose | 'GooseCollection':
+    def __getitem__(self, index):
         if isinstance(index, slice):
             return GooseCollection(self._geese[index])
         return self._geese[index]
@@ -47,12 +42,12 @@ class GooseCollection:
     def __delitem__(self, index: int) -> None:
         del self._geese[index]
 
-    def get_random(self, rng: random.Random, cls: type[TGoose] | None = None) -> TGoose:
+    def get_random(self, rng: random.Random, cls=None):
         '''
         Возвращает случайного гуся, при необходимости фильтруя по классу.
         '''
         candidates = [goose for goose in self._geese if cls is None or isinstance(goose, cls)]
-        return cast(TGoose, rng.choice(candidates))
+        return rng.choice(candidates)
 
     def find_by_name(self, name: str) -> Goose | None:
         '''

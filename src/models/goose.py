@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from src.constants import MERGE_HYPE_BONUS
 from src.models.player import Player
 

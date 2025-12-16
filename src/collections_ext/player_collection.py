@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import random
 from collections.abc import Iterable, Iterator
 
@@ -34,7 +32,7 @@ class PlayerCollection:
             return any(p.name == item for p in self._players)
         return False
 
-    def __getitem__(self, index: int | slice) -> Player | 'PlayerCollection':
+    def __getitem__(self, index):
         if isinstance(index, slice):
             return PlayerCollection(self._players[index])
         return self._players[index]

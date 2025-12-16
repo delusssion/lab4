@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Chip:
     '''
     Фишка казино, поддерживает сложение для объединения ставок.
